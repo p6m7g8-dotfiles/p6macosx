@@ -15,21 +15,11 @@ p6df::modules::p6macosx::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::p6macosx::external::brew()
-#
-#>
-######################################################################
-p6df::modules::p6macosx::external::brew() { }
-
-######################################################################
-#<
-#
 # Function: p6df::modules::p6macosx::init()
 #
 #>
 ######################################################################
 p6df::modules::p6macosx::init() {
 
-    local dir=$P6_DFZ_SRC_DIR/p6m7g8/p6macosx
-    p6_bootstrap "$dir"
+    p6_bootstrap "$__p6_dir"
 }
