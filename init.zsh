@@ -20,6 +20,7 @@ p6df::modules::p6macosx::deps() {
 #>
 ######################################################################
 p6df::modules::p6macosx::init() {
-
-    p6_bootstrap "$__p6_dir"
+  local dir="$1"
+  
+  p6_bootstrap "$dir"
 }
