@@ -25,6 +25,7 @@ p6_macosx_osa_iterm_color_default() {
 #	bg -
 #	alpha -
 #
+#  Environment:	 EOF
 #>
 ######################################################################
 p6_macosx_osa_iterm_color() {
@@ -61,6 +62,7 @@ EOF
 #  Args:
 #	host -
 #
+#  Environment:	 P6_DFZ_CONFIG_DIR
 #>
 ######################################################################
 p6_macosx_osa_bg_for_host() {
@@ -77,6 +79,7 @@ p6_macosx_osa_bg_for_host() {
 #  Args:
 #	host -
 #
+#  Environment:	 P6_DFZ_CONFIG_DIR
 #>
 ######################################################################
 p6_macosx_osa_fg_for_host() {

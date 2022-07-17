@@ -15,7 +15,11 @@ p6df::modules::p6macosx::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::p6macosx::init()
+# Function: p6df::modules::p6macosx::init(_module, dir)
+#
+#  Args:
+#	_module -
+#	dir -
 #
 #>
 ######################################################################
