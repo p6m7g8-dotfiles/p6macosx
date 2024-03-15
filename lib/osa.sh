@@ -69,7 +69,7 @@ p6_macosx_osa_iterm_color_run() {
     local host="$1"
     local code="$2"
 
-    p6_macosx_osa_iterm_color_set "$mock_host"
+    p6_macosx_osa_iterm_color_set "$host"
     p6_run_code "$code"
     p6_macosx_osa_iterm_color_default
 
