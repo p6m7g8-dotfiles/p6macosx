@@ -95,8 +95,8 @@ p6_macosx_osa_iterm_color_set() {
     local bg
     local opacity
 
-    host_fg=$(p6_macosx_osa_fg_for_host "$mock_host")
-    host_bg=$(p6_macosx_osa_bg_for_host "$mock_host")
+    host_fg=$(p6_macosx_osa_fg_for_host "$host")
+    host_bg=$(p6_macosx_osa_bg_for_host "$host")
     fg=$(p6_color_name_to_rgb "$host_fg")
     bg=$(p6_color_name_to_rgb "$host_bg")
     opacity=$(p6_color_opacity_factor "opacity")
