@@ -56,6 +56,8 @@
 - p6_macosx_osa_fg_for_host(host)
 - p6_macosx_osa_iterm_color(host, fg, bg, alpha)
 - p6_macosx_osa_iterm_color_default()
+- p6_macosx_osa_iterm_color_run(host, code)
+- p6_macosx_osa_iterm_color_set(host)
 
 #### p6macosx/lib/ssh.sh:
 

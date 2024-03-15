@@ -57,6 +57,58 @@ EOF
 ######################################################################
 #<
 #
+# Function: p6_macosx_osa_iterm_color_run(host, code)
+#
+#  Args:
+#	host -
+#	code -
+#
+#>
+######################################################################
+p6_macosx_osa_iterm_color_run() {
+    local host="$1"
+    local code="$2"
+
+    p6_macosx_osa_iterm_color_set "$mock_host"
+    p6_run_code "$code"
+    p6_macosx_osa_iterm_color_default
+
+    p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6_macosx_osa_iterm_color_set(host)
+#
+#  Args:
+#	host -
+#
+#>
+######################################################################
+p6_macosx_osa_iterm_color_set() {
+    local host="$1"
+
+    local host_fg
+    local host_bg
+    local fg
+    local bg
+    local opacity
+
+    host_fg=$(p6_macosx_osa_fg_for_host "$mock_host")
+    host_bg=$(p6_macosx_osa_bg_for_host "$mock_host")
+    fg=$(p6_color_name_to_rgb "$host_fg")
+    bg=$(p6_color_name_to_rgb "$host_bg")
+    opacity=$(p6_color_opacity_factor "opacity")
+
+    p6_macosx_osa_iterm_color "$host" "$fg" "$bg" "$opacity"
+
+    p6_return_void
+}
+
+######################################################################
+#<
+#
 # Function: p6_macosx_osa_bg_for_host(host)
 #
 #  Args:
@@ -68,7 +120,7 @@ EOF
 p6_macosx_osa_bg_for_host() {
     local host="$1"
 
-    p6_file_display $P6_DFZ_CONFIG_DIR/.hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $2 }'
+    p6_file_display $P6_DFZ_CONFIG_DIR/.p6hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $2 }'
 }
 
 ######################################################################
@@ -85,5 +137,5 @@ p6_macosx_osa_bg_for_host() {
 p6_macosx_osa_fg_for_host() {
     local host="$1"
 
-    p6_file_display $P6_DFZ_CONFIG_DIR/.hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $3 }'
+    p6_file_display $P6_DFZ_CONFIG_DIR/.p6hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $3 }'
 }
