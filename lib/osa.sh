@@ -12,6 +12,8 @@ p6_macosx_osa_iterm_color_default() {
     local opacity=$(p6_color_opacity_factor "opacity")
 
     p6_macosx_osa_iterm_color "localhost" "$white" "$black" "$opacity"
+
+    p6_return_void
 }
 
 ######################################################################
@@ -52,6 +54,8 @@ tell application "iTerm"
    end tell
 end tell
 EOF
+
+    p6_return_void
 }
 
 ######################################################################
@@ -89,17 +93,11 @@ p6_macosx_osa_iterm_color_run() {
 p6_macosx_osa_iterm_color_set() {
     local host="$1"
 
-    local host_fg
-    local host_bg
-    local fg
-    local bg
-    local opacity
-
-    host_fg=$(p6_macosx_osa_fg_for_host "$host")
-    host_bg=$(p6_macosx_osa_bg_for_host "$host")
-    fg=$(p6_color_name_to_rgb "$host_fg")
-    bg=$(p6_color_name_to_rgb "$host_bg")
-    opacity=$(p6_color_opacity_factor "opacity")
+    local host_fg=$(p6_macosx_osa_fg_for_host "$host")
+    local host_bg=$(p6_macosx_osa_bg_for_host "$host")
+    local fg=$(p6_color_name_to_rgb "$host_fg")
+    local bg=$(p6_color_name_to_rgb "$host_bg")
+    local opacity=$(p6_color_opacity_factor "opacity")
 
     p6_macosx_osa_iterm_color "$host" "$fg" "$bg" "$opacity"
 
@@ -109,10 +107,13 @@ p6_macosx_osa_iterm_color_set() {
 ######################################################################
 #<
 #
-# Function: p6_macosx_osa_bg_for_host(host)
+# Function: str bg = p6_macosx_osa_bg_for_host(host)
 #
 #  Args:
 #	host -
+#
+#  Returns:
+#	str - bg
 #
 #  Environment:	 P6_DFZ_CONFIG_DIR
 #>
@@ -120,16 +121,21 @@ p6_macosx_osa_iterm_color_set() {
 p6_macosx_osa_bg_for_host() {
     local host="$1"
 
-    p6_file_display $P6_DFZ_CONFIG_DIR/.p6hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $2 }'
+    local bg=$(p6_file_display $P6_DFZ_CONFIG_DIR/.p6hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $2 }')
+
+    p6_return_str "$bg"
 }
 
 ######################################################################
 #<
 #
-# Function: p6_macosx_osa_fg_for_host(host)
+# Function: str fg = p6_macosx_osa_fg_for_host(host)
 #
 #  Args:
 #	host -
+#
+#  Returns:
+#	str - fg
 #
 #  Environment:	 P6_DFZ_CONFIG_DIR
 #>
@@ -137,5 +143,7 @@ p6_macosx_osa_bg_for_host() {
 p6_macosx_osa_fg_for_host() {
     local host="$1"
 
-    p6_file_display $P6_DFZ_CONFIG_DIR/.p6hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $3 }'
+    local fg=$(p6_file_display $P6_DFZ_CONFIG_DIR/.p6hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $3 }')
+
+    p6_return_str "$fg"
 }
