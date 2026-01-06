@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 ######################################################################
 #<
 #
@@ -121,7 +122,7 @@ p6_macosx_osa_iterm_color_set() {
 p6_macosx_osa_bg_for_host() {
     local host="$1"
 
-    local bg=$(p6_file_display $P6_DFZ_CONFIG_DIR/.p6hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $2 }')
+    local bg=$(p6_file_display "$P6_DFZ_CONFIG_DIR/.p6hosts" | awk -v k=$host 'tolower($1) ~ tolower(k) { print $2 }')
 
     p6_return_str "$bg"
 }
@@ -143,7 +144,7 @@ p6_macosx_osa_bg_for_host() {
 p6_macosx_osa_fg_for_host() {
     local host="$1"
 
-    local fg=$(p6_file_display $P6_DFZ_CONFIG_DIR/.p6hosts | awk -v k=$host 'tolower($1) ~ tolower(k) { print $3 }')
+    local fg=$(p6_file_display "$P6_DFZ_CONFIG_DIR/.p6hosts" | awk -v k=$host 'tolower($1) ~ tolower(k) { print $3 }')
 
     p6_return_str "$fg"
 }
