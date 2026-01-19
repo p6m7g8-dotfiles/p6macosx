@@ -28,7 +28,6 @@ p6_macosx_osa_iterm_color_default() {
 #	bg -
 #	alpha -
 #
-#  Environment:	 EOF
 #>
 ######################################################################
 p6_macosx_osa_iterm_color() {
