@@ -122,7 +122,7 @@ p6_macosx_osa_bg_for_host() {
     local host="$1"
 
     # shellcheck disable=2086
-    local bg=$(p6_file_display "$P6_DFZ_CONFIG_DIR/.p6hosts" | awk -v k=$host 'tolower($1) ~ tolower(k) { print $2 }')
+    local bg=$(p6_file_display "$P6_DFZ_CONFIG_DIR/.p6hosts" | p6_filter_row_select_icase "^${host}[[:space:]]" | p6_filter_column_pluck 2)
 
     p6_return_str "$bg"
 }
@@ -145,7 +145,7 @@ p6_macosx_osa_fg_for_host() {
     local host="$1"
 
     # shellcheck disable=2086
-    local fg=$(p6_file_display "$P6_DFZ_CONFIG_DIR/.p6hosts" | awk -v k=$host 'tolower($1) ~ tolower(k) { print $3 }')
+    local fg=$(p6_file_display "$P6_DFZ_CONFIG_DIR/.p6hosts" | p6_filter_row_select_icase "^${host}[[:space:]]" | p6_filter_column_pluck 3)
 
     p6_return_str "$fg"
 }
