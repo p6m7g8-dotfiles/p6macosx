@@ -43,17 +43,34 @@ TODO: Add a short summary of this module.
 
 - `p6df::modules::p6macosx::deps()`
 - `p6df::modules::p6macosx::init(_module, dir)`
+  - Args:
+    - _module - 
+    - dir - 
 
 #### p6macosx/lib
 
 ##### p6macosx/lib/osa.sh
 
 - `p6_macosx_osa_iterm_color(host, fg, bg, alpha)`
+  - Args:
+    - host - 
+    - fg - 
+    - bg - 
+    - alpha - 
 - `p6_macosx_osa_iterm_color_default()`
 - `p6_macosx_osa_iterm_color_run(host, code)`
+  - Args:
+    - host - 
+    - code - 
 - `p6_macosx_osa_iterm_color_set(host)`
+  - Args:
+    - host - 
 - `str bg = p6_macosx_osa_bg_for_host(host)`
+  - Args:
+    - host - 
 - `str fg = p6_macosx_osa_fg_for_host(host)`
+  - Args:
+    - host - 
 
 ## Hierarchy
 
